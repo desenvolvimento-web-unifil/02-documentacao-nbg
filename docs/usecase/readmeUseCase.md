@@ -2,20 +2,22 @@
 
 flowchart LR
  A[User]
- B[Criar_Conta]
- C[Fazer_Login]
- D[Realizar_Apostas]
- E[Consultar_Historico]
- F[Gerenciar_Saldo]
- G[Consultar_Resultados]
- H[Realizar_Saques]
+ B[Registrar Usuarios]
+ C[Autenticar Usuarios]
+ D[Gerenciar Saldo]
+ E[Realizar Apostas]
+ F[Consultar Resultados]
+ G[Consultar Historico de apostas]
+ H[Realizar Deposito]
+ I[Realizar Saque]
  
  A --> B
  A --> C
  A --> D
  A --> E
+ D --> H
+ D --> I
  A --> F
- A --> G
- A --> H
+ F --> G
 
 ```
