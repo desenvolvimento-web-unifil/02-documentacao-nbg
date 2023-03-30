@@ -3,9 +3,15 @@ erDiagram
 USUARIO || --|{ APOSTA : faz
 USUARIO || --|{ DEPOSITO : faz
 USUARIO || --|{ SAQUE : faz
-USUARIO || --|{ HISTORICO : possui
-JOGO    || --|{ CATEGORIA : tem
-APOSTA  || --|{ JOGO : pertence
+USUARIO || --|{ HISTORICO : possuir
+APOSTA  || --|{ RESULTADO_FINAL : referencia
+RESULTADO_FINAL || --|{ JOGO : pertence
+APOSTA  || --|{ TOTAL_GOLS : referencia
+TOTAL_GOLS || --|{ JOGO : pertence
+APOSTA  || --|{ TOTAL_FALTAS : referencia
+TOTAL_FALTAS || --|{ JOGO : pertence
+APOSTA  || --|{ ESCANTEIOS : referencia
+ESCANTEIOS || --|{ JOGO : pertence
 
 USUARIO {
     int id_usuario
@@ -19,9 +25,9 @@ USUARIO {
 
 APOSTA {
     int id_aposta
-    varchar[50] nome_aposta
+    int id_usuario
     real valor_aposta
-    real odd
+    int tipo_aposta
 }
 
 HISTORICO {
@@ -46,12 +52,38 @@ SAQUE {
 
 JOGO {
     int id_jogo
-    varchar[50] nome_jogo
-    int id_categoria
+    varchar[50] time_a
+    varchar[50] time_b
+    time hora_inicio
 }
 
-CATEGORIA {
-    int id_categoria
-    varchar[50] nome_categoria
+RESULTADO_FINAL {
+    int id_resultado
+    int id_jogo
+    int placar_time_a
+    int placar_time_B
+    real odd
 }
+
+TOTAL_GOLS {
+    int id_total_gols
+    int id_jogo
+    int tipo
+    int quantidade_gols
+}
+
+TOTAL_FALTAS {
+    int id_total_faltas
+    int id_jogo
+    int tipo
+    int quantidade_faltas
+}
+
+ESCANTEIOS {
+    int id_escanteios
+    int id_jogo
+    int tipo
+    int quantidade_escanteios
+}
+
 ```
