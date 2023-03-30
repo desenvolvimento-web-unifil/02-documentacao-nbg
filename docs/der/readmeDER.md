@@ -28,6 +28,7 @@ APOSTA {
     int id_usuario
     real valor_aposta
     int tipo_aposta
+    boolean finalizada
 }
 
 HISTORICO {
