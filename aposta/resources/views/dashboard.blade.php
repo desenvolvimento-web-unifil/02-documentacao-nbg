@@ -13,7 +13,6 @@
                     {{ __("Apostas") }} 
                 </div>
             </div>
-            <button type="button" class="bg-gray-500 text-white">Criar aposta</button>
         </div>
     </div>
 </x-app-layout>
