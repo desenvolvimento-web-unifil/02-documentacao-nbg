@@ -13,6 +13,8 @@
                     {{ __("Apostas") }} 
                 </div>
             </div>
+            <a href="/" class="bg-gray-500 text-white">Voltar para a Home</a>
+
         </div>
     </div>
 </x-app-layout>
