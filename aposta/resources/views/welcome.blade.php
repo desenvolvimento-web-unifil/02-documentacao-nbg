@@ -98,8 +98,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('deposito') }}">Deposito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('saque') }}">Saque</a>
+                    </li>
                    
                 </ul>
+                @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            Saldo R$
+                            @php
+                                echo auth()->user()->balance;
+                            @endphp
+                        @endauth
+                    </div>
+                @endif
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth

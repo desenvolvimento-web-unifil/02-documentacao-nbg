@@ -67,72 +67,26 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('aposta') }}">Apostas esportivas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('apostaviv') }}">Apostas ao vivo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('jogos') }}">Cassino</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('deposito') }}">Deposito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('saque') }}">Saque</a>
-                    </li>
-                </ul>
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            Saldo R$
-                            @php
-                                echo auth()->user()->balance;
-                            @endphp
-                        @endauth
-                    </div>
-                @endif
-                @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-                @endif
-            </div>
         </div>
     </nav>
 
     <div id="betnow">
-        Escolha um esporte e <a href="#">FAÇA SUA APOSTA AGORA!</a>
+        Depositar
     </div>
 
     <div class="container">
-        <h1>Apostas Esportivas</h1>
-        <p>Aqui você pode apostar em diversos esportes.</p>
-        <p>Confira nossa seleção de esportes e faça suas apostas:</p>
-        <ul>
-            <li>Futebol</li>
-            <li>Tênis</li>
-            <li>Basquete</li>
-            <li>Vôlei</li>
-            <li>Corrida de Fórmula 1</li>
-        </ul>
+        <form action="/deposito" method="post">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label">CPF</label>
+                <input type="number" class="form-control" name="cpf" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Valor do deposito</label>
+              <input type="number" class="form-control" name="valor" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: grey">Depositar</button>
+          </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

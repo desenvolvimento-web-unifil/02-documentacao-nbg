@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deposito;
+use App\Models\User;
 use App\Http\Requests\StoreDepositoRequest;
 use App\Http\Requests\UpdateDepositoRequest;
+use Illuminate\Http\Request;
 
 class DepositoController extends Controller
 {
@@ -13,7 +15,7 @@ class DepositoController extends Controller
      */
     public function index()
     {
-        //
+        return view('/deposito/deposito');
     }
 
     /**
@@ -21,15 +23,28 @@ class DepositoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDepositoRequest $request)
+    public function store(Request $request)
     {
-        //
+        Deposito::create([
+            'data_deposito' => date('d-m-y h:i:s'),
+            'valor' => $request->valor,
+            'cpf' => $request->cpf,
+            'user_id' => auth()->user()->id
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        
+        $user->update([
+            'balance' => $request->valor
+        ]);
+
+        return redirect('/');
     }
 
     /**
