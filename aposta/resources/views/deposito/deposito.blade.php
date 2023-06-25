@@ -86,7 +86,10 @@
               <input type="number" class="form-control" name="valor" required>
             </div>
             <button type="submit" class="btn btn-primary" style="background-color: grey">Depositar</button>
-          </form>
+        </form>
+        <div style="margin-top: 5px">
+            <a type="submit" class="btn btn-primary" style="background-color: grey" href="/deposito">Histórico de depósitos</a>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

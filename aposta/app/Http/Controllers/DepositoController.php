@@ -15,7 +15,8 @@ class DepositoController extends Controller
      */
     public function index()
     {
-        return view('/deposito/deposito');
+        $user = User::find(auth()->user()->id);
+        return view('/deposito/historicoDeposito', ['user' => $user]);
     }
 
     /**
@@ -23,7 +24,7 @@ class DepositoController extends Controller
      */
     public function create()
     {
-        
+        return view('/deposito/deposito');
     }
 
     /**

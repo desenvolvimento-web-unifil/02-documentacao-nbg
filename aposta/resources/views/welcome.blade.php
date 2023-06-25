@@ -99,10 +99,10 @@
                         <a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('deposito') }}">Deposito</a>
+                        <a class="nav-link" href="{{ url('deposito/create') }}">Deposito</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('saque') }}">Saque</a>
+                        <a class="nav-link" href="{{ url('saque/create') }}">Saque</a>
                     </li>
                    
                 </ul>
