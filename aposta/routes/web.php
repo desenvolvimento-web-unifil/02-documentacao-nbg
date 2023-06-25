@@ -30,3 +30,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/aposta', function () {
+    return view('apostas');
+});
+Route::get('/apostaviv', function () {
+    return view('apostasaovivo');
+});
+Route::get('/jogos', function () {
+    return view('jogos');
+});
