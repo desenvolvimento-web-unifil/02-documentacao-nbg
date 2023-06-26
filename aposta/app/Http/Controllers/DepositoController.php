@@ -40,10 +40,9 @@ class DepositoController extends Controller
         ]);
 
         $user = User::find(auth()->user()->id);
-        
-        $user->update([
-            'balance' => $request->valor
-        ]);
+
+        $user->balance = $user->balance + $request->valor;
+        $user->save();
 
         return redirect('/');
     }
