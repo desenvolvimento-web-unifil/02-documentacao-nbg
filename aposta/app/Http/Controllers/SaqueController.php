@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Saque;
 use App\Http\Requests\StoreSaqueRequest;
 use App\Http\Requests\UpdateSaqueRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class SaqueController extends Controller
 {
@@ -13,7 +15,8 @@ class SaqueController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(auth()->user()->id);
+        return view('/saque/historicoSaque', ['user' => $user]);
     }
 
     /**
@@ -21,15 +24,36 @@ class SaqueController extends Controller
      */
     public function create()
     {
-        //
+        return view('/saque/saque');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSaqueRequest $request)
+    public function store(Request $request)
     {
-        //
+        $user = User::find(auth()->user()->id);
+
+        if($request->valorSaque > $user->balance)
+        {
+            return redirect()->back()->with('danger', 'Você não possui saldo suficiente para este saque');
+        }
+
+        Saque::create([
+            'data_saque' => date('d-m-y h:i:s'),
+            'valor' => $request->valorSaque,
+            'user_id' => auth()->user()->id,
+            'banco' => $request->banco,
+            'nomeTitular' => $request->titular,
+            'nConta' => $request->nConta,
+            'nAgencia' => $request->nAgencia,
+            'tipoConta' => $request->tipoConta
+        ]);
+
+        $user->balance = $user->balance - $request->valorSaque;
+        $user->save();
+
+        return redirect('/')->with('saque', 'Saque realizado com sucesso');
     }
 
     /**

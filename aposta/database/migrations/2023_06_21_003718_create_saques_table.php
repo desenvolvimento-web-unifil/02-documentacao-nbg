@@ -17,6 +17,11 @@ return new class extends Migration
             $table->decimal('valor');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('banco');
+            $table->string('nomeTitular');
+            $table->integer('nConta');
+            $table->integer('nAgencia');
+            $table->string('tipoConta');
             $table->timestamps();
         });
     }

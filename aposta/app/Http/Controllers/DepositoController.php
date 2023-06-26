@@ -32,6 +32,11 @@ class DepositoController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->valor <= 0)
+        {
+            return redirect()->back()->with('danger', 'Digite um valor maior do que zero (0)');
+        }
+
         Deposito::create([
             'data_deposito' => date('d-m-y h:i:s'),
             'valor' => $request->valor,
@@ -44,7 +49,7 @@ class DepositoController extends Controller
         $user->balance = $user->balance + $request->valor;
         $user->save();
 
-        return redirect('/');
+        return redirect('/')->with('deposito', 'Deposito realizado com sucesso');
     }
 
     /**

@@ -71,32 +71,40 @@
     </nav>
 
     <div id="betnow">
-        Histórico de depositos
+        Histórico de saques
     </div>
 
     <div class="container">
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">ID do depósito</th>
+                <th scope="col">ID do saque</th>
                 <th scope="col">Data</th>
                 <th scope="col">Valor</th>
-                <th scope="col">CPF</th>
+                <th scope="col">Banco</th>
+                <th scope="col">Titular</th>
+                <th scope="col">Número da conta</th>
+                <th scope="col">Número da Agência</th>
+                <th scope="col">Tipo de conta</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($user->depositos as $deposito)
+                @foreach ($user->saques as $saque)
                     <tr>
-                        <th scope="row">{{$deposito->id}}</th>
-                        <td>{{date_format(date_create($deposito->data_deposito), 'd/m/Y')}}</td>
-                        <td>{{$deposito->valor}}</td>
-                        <td>{{$deposito->cpf}}</td>
+                        <th scope="row">{{$saque->id}}</th>
+                        <td>{{date_format(date_create($saque->data_saque), 'd/m/Y')}}</td>
+                        <td>{{$saque->valor}}</td>
+                        <td>{{$saque->banco}}</td>
+                        <td>{{$saque->nomeTitular}}</td>
+                        <td>{{$saque->nConta}}</td>
+                        <td>{{$saque->nAgencia}}</td>
+                        <td>{{$saque->tipoConta}}</td>
                     </tr>
                 @endforeach
             </tbody>
           </table>
           <div style="margin-top: 5px">
-              <a type="submit" class="btn btn-primary" style="background-color: grey" href="/deposito/create">Voltar</a>
+              <a type="submit" class="btn btn-primary" style="background-color: grey" href="/saque/create">Voltar</a>
           </div>
     </div>
 

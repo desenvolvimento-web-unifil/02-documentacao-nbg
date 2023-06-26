@@ -74,6 +74,12 @@
         Depositar
     </div>
 
+    @if (session('danger'))
+        <div class="alert alert-danger mt-2">
+            {{session('danger')}}
+        </div>
+    @endif
+
     <div class="container">
         <form action="/deposito" method="post">
             @csrf
