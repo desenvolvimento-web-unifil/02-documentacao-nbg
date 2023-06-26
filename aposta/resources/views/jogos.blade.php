@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Home</title>
+    <title>Jogos</title>
 
     <!-- Fonts -->
     <link href="/css/index.css" rel="stylesheet" type="text/css">
@@ -58,33 +58,19 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-
-        /* Customizing the carousel */
-        #carouselExampleIndicators {
-            margin-top: 30px;
-        }
-
-        #carouselExampleIndicators .carousel-item {
-            text-align: center;
-        }
-
-        #carouselExampleIndicators img {
-            max-height: 300px;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="/">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('aposta') }}">Apostas esportivas</a>
@@ -104,7 +90,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('saque/create') }}">Saque</a>
                     </li>
-                   
                 </ul>
                 @if (Route::has('login'))
                     <div class="top-right links">
@@ -138,61 +123,17 @@
     </div>
 
     <div class="container">
-        @guest
-            <div class="links">
-                <a href="{{ url('aposta') }}">Apostas esportivas</a>
-                <a href="{{ url('player') }}">Apostas ao vivo</a>
-                <a href="{{ url('jogos') }}">Cassino</a>
-                <a href="{{ url('dashboard') }}">Dashboard</a>
-            </div>
-        @else
-            <div class="links">
-                <a href="{{ url('aposta') }}">Apostas esportivas</a>
-                <a href="{{ url('apostaviv') }}">Apostas ao vivo</a>
-                <a href="{{ url('jogos') }}">Cassino</a>
-                <a href="{{ url('dashboard') }}">Dashboard</a>
-            </div>
-        @endguest
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block" src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3150913:1634900949/image/brasileiro-_11.jpg?f=16x9&h=720&q=0.8&w=1280&$p$f$h$q$w=0a87def" alt="Game 1">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block" src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3370906:1684497151/Corinthians-vs-Fluminense.jpg?f=16x9&h=720&q=0.8&w=1280&$p$f$h$q$w=91481a8" alt="Game 2">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block" src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3370928:1684497306/Flamengo-vs-Gremio.jpg?f=16x9&h=720&q=0.8&w=1280&$p$f$h$q$w=2e40969" alt="Game 3">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <h1>Jogos</h1>
+        <p>Aqui você encontra uma variedade de jogos de cassino emocionantes para se divertir e apostar.</p>
+        <p>Experimente a sorte em jogos como:</p>
+        <ul>
+            <li>Roleta</li>
+            <li>Blackjack</li>
+            <li>Poker</li>
+            <li>Caça-níqueis</li>
+            <li>Bacará</li>
+        </ul>
     </div>
-
-    @if (session('deposito'))
-        <div class="alert alert-success mt-2">
-            <b>{{session('deposito')}}</b>
-        </div>
-    @endif
-
-    @if (session('saque'))
-        <div class="alert alert-success mt-2">
-            <b>{{session('saque')}}</b>
-        </div>
-    @endif
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
