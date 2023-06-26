@@ -67,72 +67,45 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('aposta') }}">Apostas esportivas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('apostaviv') }}">Apostas ao vivo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('jogos') }}">Cassino</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('dashboard') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('deposito/create') }}">Deposito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('saque/create') }}">Saque</a>
-                    </li>
-                </ul>
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            Saldo R$
-                            @php
-                                echo auth()->user()->balance;
-                            @endphp
-                        @endauth
-                    </div>
-                @endif
-                @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-                @endif
-            </div>
         </div>
     </nav>
 
     <div id="betnow">
-        Escolha um esporte e <a href="#">FAÇA SUA APOSTA AGORA!</a>
+        Histórico de saques
     </div>
 
     <div class="container">
-        <h1>Apostas Esportivas</h1>
-        <p>Aqui você pode apostar em diversos esportes.</p>
-        <p>Confira nossa seleção de esportes e faça suas apostas:</p>
-        <ul>
-            <li>Futebol</li>
-            <li>Tênis</li>
-            <li>Basquete</li>
-            <li>Vôlei</li>
-            <li>Corrida de Fórmula 1</li>
-        </ul>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID do saque</th>
+                <th scope="col">Data</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Banco</th>
+                <th scope="col">Titular</th>
+                <th scope="col">Número da conta</th>
+                <th scope="col">Número da Agência</th>
+                <th scope="col">Tipo de conta</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($user->saques as $saque)
+                    <tr>
+                        <th scope="row">{{$saque->id}}</th>
+                        <td>{{date_format(date_create($saque->data_saque), 'd/m/Y')}}</td>
+                        <td>{{$saque->valor}}</td>
+                        <td>{{$saque->banco}}</td>
+                        <td>{{$saque->nomeTitular}}</td>
+                        <td>{{$saque->nConta}}</td>
+                        <td>{{$saque->nAgencia}}</td>
+                        <td>{{$saque->tipoConta}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+          </table>
+          <div style="margin-top: 5px">
+              <a type="submit" class="btn btn-primary" style="background-color: grey" href="/saque/create">Voltar</a>
+          </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
