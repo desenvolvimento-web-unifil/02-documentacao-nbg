@@ -43,6 +43,7 @@ DEPOSITO {
     int id
     date data
     real valor
+    int cpf
     int usuario_id
 }
 SAQUE {
@@ -50,6 +51,11 @@ SAQUE {
     date data
     real valor 
     int usuario_id
+    varchar[50] banco
+    varchar[50] nomeTitular
+    int nConta
+    int nAgencia
+    varchar[50] tipoConta
 }
 
 JOGO {
